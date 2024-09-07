@@ -1,0 +1,63 @@
+<!-- 
+
+<div class="d-flex justify-content-between mt-5">
+  <h2>My Tasks</h2>
+  <a href="/tasks/create" class="btn btn-success">Create Task</a>
+</div>
+
+<ul class="list-group mt-4">
+  <% tasks.forEach(task => { %>
+    <li class="list-group-item">
+      <h5><%= task.title %></h5>
+      <p><%= task.description %></p>
+      <p>Priority: <%= task.priority %></p>
+      <p>Due Date: <%= new Date(task.dueDate).toLocaleDateString() %></p>
+      <p>Status: <%= task.status %></p>
+      <a href="/tasks/<%= task._id %>/edit" class="btn btn-warning">Edit</a>
+      <form action="/tasks/<%= task._id %>/delete" method="POST" class="d-inline">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul> -->
+
+
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between">
+      <h2>My Tasks</h2>
+      <!-- Logout Button -->
+      <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+  
+    <div class="mt-4">
+      <a href="/tasks/create" class="btn btn-success">Create Task</a>
+    </div>
+  
+    <ul class="list-group mt-4">
+      <% tasks.forEach(task => { %>
+        <li class="list-group-item">
+          <h5><%= task.title %></h5>
+          <p><%= task.description %></p>
+          <p>Priority: <%= task.priority %></p>
+  
+          <!-- Render due date if it exists -->
+          <p>Due Date: 
+            <% if (task.dueDate) { %>
+              <%= new Date(task.dueDate).toLocaleDateString() %>
+            <% } else { %>
+              No Due Date
+            <% } %>
+          </p>
+  
+          <p>Status: <%= task.status %></p>
+          <a href="/tasks/<%= task._id %>/edit" class="btn btn-warning">Edit</a>
+          <form action="/tasks/<%= task._id %>/delete" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+  
+

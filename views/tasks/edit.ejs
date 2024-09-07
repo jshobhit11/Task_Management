@@ -1,0 +1,35 @@
+
+
+<div class="container mt-5">
+  <h3>Edit Task</h3>
+  <form action="/tasks/<%= task._id %>/update" method="POST">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" value="<%= task.title %>" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea name="description" class="form-control"><%= task.description %></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="priority" class="form-label">Priority</label>
+      <select name="priority" class="form-control">
+        <option value="Low" <%= task.priority === 'Low' ? 'selected' : '' %>>Low</option>
+        <option value="Medium" <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+        <option value="High" <%= task.priority === 'High' ? 'selected' : '' %>>High</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="dueDate" class="form-label">Due Date</label>
+      <input type="date" name="dueDate" class="form-control" value="<%= task.dueDate.toISOString().split('T')[0] %>">
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select name="status" class="form-control">
+        <option value="Pending" <%= task.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+        <option value="Completed" <%= task.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-warning">Update Task</button>
+  </form>
+</div>
